@@ -2,3 +2,11 @@ fastapi
 uvicorn[standard]
 requests
 pydantic
+sentry-sdk[fastapi]
+pytest
+pytest-asyncio
+pytest-cov
+flake8
+black
+isort
+pre-commit
