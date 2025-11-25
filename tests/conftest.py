@@ -5,7 +5,6 @@ from fastapi.testclient import TestClient
 
 from src.main import app
 
-
 os.environ["TESTING"] = "1"
 
 

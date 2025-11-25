@@ -1,7 +1,8 @@
 # src/external_api/service.py
 
 import requests
-from src.external_api.models import CountryRawModel, CountryDetailedModel
+
+from src.external_api.models import CountryDetailedModel, CountryRawModel
 
 
 class CountryService:
