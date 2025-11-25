@@ -2,9 +2,12 @@
 
 from pydantic import BaseModel, Field, IPvAnyAddress
 
+
 class CountryRawModel(BaseModel):
     ip: IPvAnyAddress = Field(..., description="Requested IP address")
-    country: str = Field(..., min_length=2, max_length=3, description="Country ISO code")
+    country: str = Field(
+        ..., min_length=2, max_length=3, description="Country ISO code"
+    )
 
 
 class CountryDetailedModel(BaseModel):

@@ -4,7 +4,9 @@ from fastapi import APIRouter, HTTPException, Query
 from src.external_api.service import service
 from src.external_api.models import CountryRawModel, CountryDetailedModel
 from fastapi.responses import HTMLResponse
+
 router = APIRouter(prefix="/external", tags=["External API"])
+
 
 @router.get("/data", response_model=CountryRawModel)
 def get_raw(ip: str = Query("8.8.8.8", description="IP address")):
@@ -20,6 +22,8 @@ def get_processed(ip: str = Query("8.8.8.8")):
         return service.get_processed_country(ip)
     except Exception as e:
         raise HTTPException(500, str(e))
+
+
 @router.get("/html", response_class=HTMLResponse)
 def get_country_html(ip: str = "8.8.8.8"):
     """

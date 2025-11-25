@@ -6,7 +6,7 @@ on:
     branches: ["main"]
 
 jobs:
-  # linter job
+  # LINT JOB
   lint:
     name: Lint (black, isort, flake8)
     if: github.event.pull_request.merged == true
@@ -36,7 +36,7 @@ jobs:
         run: flake8 --exclude=venv,env,migrations
 
 
-  # test job
+  # TEST JOB
   tests:
     name: Tests + Coverage
     if: github.event.pull_request.merged == true
@@ -68,7 +68,7 @@ jobs:
           path: coverage.xml
 
 
-  # deploy job
+  # DEPLOY JOB
   deploy:
     name: Deploy to Render
     if: github.event.pull_request.merged == true
@@ -78,11 +78,11 @@ jobs:
     steps:
       - name: Trigger Render Deploy Hook
         env:
-          RENDER_DEPLOY_HOOK: ${{ 'https://api.render.com/deploy/srv-d4hkcuodl3ps739rhj6g?key=YE5kcI_9aPk' }}
+          RENDER_DEPLOY_HOOK: "https://api.render.com/deploy/srv-d4hkcuodl3ps739rhj6g?key=YE5kcI_9aPk"
         run: curl -X POST "$RENDER_DEPLOY_HOOK"
 
 
-   # health check job
+  # HEALTHCHECK JOB
   healthcheck:
     name: Health Check on Render
     if: github.event.pull_request.merged == true
@@ -92,7 +92,7 @@ jobs:
     steps:
       - name: Wait for Render healthcheck
         env:
-          HEALTHCHECK_URL: ${{ secrets.RENDER_HEALTHCHECK_URL }}
+          HEALTHCHECK_URL: "https://lr-7-9-country-fastapi.onrender.com"
         run: |
           echo "Waiting for production health..."
           for i in {1..40}; do
