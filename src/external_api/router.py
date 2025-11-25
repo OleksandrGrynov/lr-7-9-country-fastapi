@@ -1,9 +1,10 @@
 # src/external_api/router.py
 
 from fastapi import APIRouter, HTTPException, Query
-from src.external_api.service import service
-from src.external_api.models import CountryRawModel, CountryDetailedModel
 from fastapi.responses import HTMLResponse
+
+from src.external_api.models import CountryDetailedModel, CountryRawModel
+from src.external_api.service import service
 
 router = APIRouter(prefix="/external", tags=["External API"])
 

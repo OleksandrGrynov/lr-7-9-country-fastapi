@@ -1,8 +1,10 @@
-from fastapi import FastAPI
 import logging
-from src.external_api.router import router as external_router
+
+from fastapi import FastAPI
+
 from src.core.logging_config import setup_logging
 from src.core.sentry import init_sentry
+from src.external_api.router import router as external_router
 
 setup_logging()
 init_sentry()
